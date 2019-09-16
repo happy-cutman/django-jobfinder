@@ -1,0 +1,1 @@
+web: gunicorn djagno-bs.wsgi --log-file -
