@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вакансии C# dev
+{% endblock %}
+
+{% block content %}
+<div class="result-view" style="background-color: #D7F1FE;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 offset-md-2">
+                <h1 class="mt-5 mb-5 text-center">Результаты поиска</h1>
+
+                {% for elem in workua_data %}
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ elem.title }}</h3>
+                        <h6 class="card-subtitle mb-2 text-muted"><b>{{ elem.company }}</b></h6>
+                        <p class="card-text">{{ elem.descr }}</p>
+                        <a href="{{ elem.url }}" class="card-link blue-text">{{ elem.url }}</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                {% for elem in rabotaua_data %}
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ elem.title }}</h3>
+                        <h6 class="card-subtitle mb-2 text-muted"><b>{{ elem.company }}</b></h6>
+                        <p class="card-text">{{ elem.descr }}</p>
+                        <a href="{{ elem.url }}" class="card-link purple-text">{{ elem.url }}</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

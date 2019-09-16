@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Main page
+{% endblock %}
+
+
+{% block content %}
+    <div class="view"
+         style="background-image: url('http://wallperio.com/data/out/251/minimalist-wallpapers_609432689.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="mask rgba-gradient align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                        <h1 class="mt-5 mb-5 text-center primary-color-text">Сервис поиска работы</h1>
+                        <h5 class="text-center">Это веб приложение позволяет осуществить поиск вакансий для
+                            программистов с
+                            популярнейших ресурсов работодателей Украины</h5>
+
+                        <form action="" method="POST" class="mt-5 mb-5 text-center"
+                              id="main-form">
+                            {% csrf_token %}
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="language-field">Выберите язык:</label>
+                                    <select class="form-control" id="language-field">
+                                        <option value="1">Python</option>
+                                        <option value="2">Javascript</option>
+                                        <option value="3">Java</option>
+                                        <option value="4">C#</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="city-field">Выберите город:</label>
+                                    <select class="form-control" name="city" id="city-field">
+                                        <option value="1">Киев</option>
+                                        <!--                    <option value="2">Харьков</option>-->
+                                        <!--                    <option value="3">Донецк</option>-->
+                                        <!--                    <option value="4">Львов</option>-->
+                                        <!--                    <option value="5">Одесса</option>-->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="btn purple-gradient waves-effect btn-block mt-3" type="submit">Поиск</button>
+                        </form>
+
+
+                        <script>
+                $("#main-form").submit(function(){
+                    if($("#language-field").val()==="1"){
+                        $(this).attr("action","{% url 'kiev_python_url' %}");
+                    }
+                    if($("#language-field").val()==="2"){
+                        $(this).attr("action","{% url 'kiev_javascript_url' %}");
+                    }
+                    if($("#language-field").val()==="3"){
+                        $(this).attr("action","{% url 'kiev_java_url' %}");
+                    }
+                    if($("#language-field").val()==="4"){
+                        $(this).attr("action","{% url 'kiev_c_sharp_url' %}");
+                    }
+                });
+                        </script>
+
+                    </div>
+                    <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
+                        <img src="https://i.ibb.co/VLnchhB/imgonline-com-ua-Transparent-backgr-Z0wm-BJj-Qm-W.png" alt=""
+                             class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+    </script>
+{% endblock %}
+
+
